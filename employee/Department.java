@@ -41,4 +41,10 @@ public class Department {
             SqlRunner.closeConnection();
         }
     }
+
+    public static void deleteAll(){
+        String sql = "DELETE FROM departments;";
+        SqlRunner.executeUpdate(sql);
+        SqlRunner.closeConnection();
+    }
 }
