@@ -13,20 +13,37 @@ public class Employee {
         this.department = department;
     }
 
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getId() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public double getSalary() {
         return salary;
     }
 
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
     public Department getDepartment() {
         return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public void save() {
@@ -62,6 +79,13 @@ public class Employee {
         finally {
             SqlRunner.closeConnection();
         }
+    }
+
+    public void update(){
+        int department_id = this.department.getId();
+        String sql = String.format("UPDATE employees SET name = '%s', salary = %7.2f, department_id = %d WHERE id = %d;", this.name, this.salary, department_id, this.id);
+        SqlRunner.executeUpdate(sql);
+        SqlRunner.closeConnection();
     }
 
     public static void all() {

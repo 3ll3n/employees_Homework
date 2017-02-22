@@ -16,6 +16,9 @@ public class Runner {
         Employee employee1 = new Employee("Suzie Smith", department1, 45000);
         Employee employee2 = new Employee("Jamie Jones", department2, 25000);
 
+        employee1.setName("Suzie Jones");
+        employee1.update();
+
         employee1.save();
         employee2.save();
 
