@@ -14,7 +14,7 @@ public class SqlRunner {
 
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:db/employees.db");
+            c = DriverManager.getConnection("jdbc:sqlite:employee/db/employees.db");
             c.setAutoCommit(false);
             stmt = c.createStatement();
 

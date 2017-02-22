@@ -29,8 +29,9 @@ public class Employee {
     }
 
     public void save() {
-//        String sql = String.format();
-//        this.id = SqlRunner.executeUpdate(sql);
-//        SqlRunner.closeConnection();
+        int department_id = department.getId();
+        String sql = String.format("INSERT INTO employees(name, salary, department_id) VALUES ('%s', %7.2f, %d);" , this.name, this.salary, department_id);
+        this.id = SqlRunner.executeUpdate(sql);
+        SqlRunner.closeConnection();
     }
 }

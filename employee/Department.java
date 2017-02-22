@@ -17,8 +17,8 @@ public class Department {
     }
 
     public void save() {
-//        String sql = String.format();
-//        this.id = SqlRunner.executeUpdate(sql);
-//        SqlRunner.closeConnection();
+        String sql = String.format("INSERT INTO departments (title) VALUES ('%s');", this.title);
+        this.id = SqlRunner.executeUpdate(sql);
+        SqlRunner.closeConnection();
     }
 }
