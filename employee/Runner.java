@@ -19,14 +19,17 @@ public class Runner {
         employee1.setName("Suzie Jones");
         employee1.update();
 
+        department1.setTitle("Fun");
+        department1.update();
+
         employee1.save();
         employee2.save();
 
         employee1.getEmployeeDetails();
         employee2.getEmployeeDetails();
 
-        employee1.delete();
-        department1.delete();
+//        employee1.delete();
+//        department1.delete();
 
     }
 }

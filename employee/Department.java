@@ -17,6 +17,10 @@ public class Department {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public void save() {
         String sql = String.format("INSERT INTO departments (title) VALUES ('%s');", this.title);
         this.id = SqlRunner.executeUpdate(sql);
@@ -24,7 +28,13 @@ public class Department {
     }
 
     public void delete(){
-        String sql = String.format("DELETE FROM departments WHERE id = %d", this.id);
+        String sql = String.format("DELETE FROM departments WHERE id = %d;", this.id);
+        SqlRunner.executeUpdate(sql);
+        SqlRunner.closeConnection();
+    }
+
+    public void update(){
+        String sql = String.format("UPDATE departments SET title = '%s' WHERE id = %d;", this.title, this.id);
         SqlRunner.executeUpdate(sql);
         SqlRunner.closeConnection();
     }
