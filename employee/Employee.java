@@ -36,6 +36,34 @@ public class Employee {
         SqlRunner.closeConnection();
     }
 
+    public void delete(){
+        String sql = String.format("DELETE FROM employees WHERE employees.id = %d;", this.id);
+        SqlRunner.executeUpdate(sql);
+        SqlRunner.closeConnection();
+    }
+
+    public void getEmployeeDetails(){
+        String sql = String.format("SELECT employees.name, departments.title FROM employees JOIN departments ON departments.id = employees.department_id WHERE employees.id = %d;", this.id);
+        ResultSet rs = SqlRunner.executeQuery(sql);
+        try{
+            while (rs.next()){
+                String name = rs.getString("name");
+                String department = rs.getString("title");
+
+                System.out.println("Employee name: " + name);
+                System.out.println("Employee department: " + department);
+                System.out.println();
+            }
+        }
+        catch (Exception e) {
+            System.err.println(e.getClass().getName() + " : " + e.getMessage());
+            System.exit(0);
+        }
+        finally {
+            SqlRunner.closeConnection();
+        }
+    }
+
     public static void all() {
         String sql = "SELECT * FROM employees;";
         ResultSet rs = SqlRunner.executeQuery(sql);
@@ -48,28 +76,6 @@ public class Employee {
         }
         catch (Exception e) {
             System.err.println(e.getClass().getName() + " ; " + e.getMessage());
-            System.exit(0);
-        }
-        finally {
-            SqlRunner.closeConnection();
-        }
-    }
-
-    public void getEmployeeDetails(){
-        String sql = String.format("SELECT e.name, d.title department FROM employees e JOIN departments d ON d.id = e.department_id WHERE e.id = %d;", this.id);
-        ResultSet rs = SqlRunner.executeQuery(sql);
-        try{
-            while (rs.next()){
-                String name = rs.getString("name");
-                String department = rs.getString("department");
-
-                System.out.println("Employee name: " + name);
-                System.out.println("Employee department: " + department);
-                System.out.println();
-            }
-        }
-        catch (Exception e) {
-            System.err.println(e.getClass().getName() + " : " + e.getMessage());
             System.exit(0);
         }
         finally {

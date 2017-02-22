@@ -4,8 +4,8 @@
 
 public class Runner {
     public static void main(String[] args){
-        Employee.deleteAll();
-        Department.deleteAll();
+//        Employee.deleteAll();
+//        Department.deleteAll();
 
         Department department1 = new Department("HR");
         Department department2 = new Department("Marketing");
@@ -21,6 +21,8 @@ public class Runner {
 
         employee1.getEmployeeDetails();
         employee2.getEmployeeDetails();
+
+        employee1.delete();
 
     }
 }
