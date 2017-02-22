@@ -23,6 +23,12 @@ public class Department {
         SqlRunner.closeConnection();
     }
 
+    public void delete(){
+        String sql = String.format("DELETE FROM departments WHERE id = %d", this.id);
+        SqlRunner.executeUpdate(sql);
+        SqlRunner.closeConnection();
+    }
+
     public static void all() {
         String sql = "SELECT * FROM departments;";
         ResultSet rs = SqlRunner.executeQuery(sql);
