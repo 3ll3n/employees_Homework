@@ -88,9 +88,13 @@ public class Employee {
         String sql = "SELECT * FROM employees;";
         ResultSet rs = SqlRunner.executeQuery(sql);
         try {
-            while (rs.next()) ; {
+            while (rs.next()) {
                 String name = rs.getString("name");
+                Double salary = rs.getDouble("salary");
+                String department_id = rs.getString("department_id");
                 System.out.println(name);
+                System.out.println(salary);
+                System.out.println(department_id);
                 System.out.println();
             }
         }
